@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Routes, useNavigate} from "react-router-dom";
-
-// Screens
+// import Loadable from 'react-loadable';
+// import {Suspense} from 'react';
 import Home from "./screens/Home"
 import Product from "./screens/Product";
 import Laptops from "./screens/Laptops";
@@ -10,14 +10,15 @@ import Cart from "./screens/Cart";
 import NotFound from "./screens/NotFound";
 
 
-
 function App() {
     let navigate = useNavigate()
   return (
       <>
           <Routes>
              <Route path="/">
-                  <Route index element={<Home/>} />
+                  <Route index element={
+                      <Home/>
+                  } />
                   <Route path=":id" element={<Product/>} />
               </Route>
               <Route path='/smartphones/'>
@@ -33,7 +34,7 @@ function App() {
               </Route>
               <Route path="*" element={<NotFound/>} />
           </Routes>
-      </>
+     </>
   );
 }
 

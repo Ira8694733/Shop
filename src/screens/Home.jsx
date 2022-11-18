@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {useGetAllProductsQuery} from "../store/api/products";
 
@@ -6,20 +6,29 @@ import Card from "../components/Card/Card";
 import Header from "../components/Header";
 import Slider from "../components/Slider";
 import Footer from "../components/Footer";
+import Preloader from "../components/Preloader";
 
 const Home = () => {
     const {products} = useSelector(state => state.products);
-
     const {error, loading} = useGetAllProductsQuery();
 
     useEffect(() => {
         console.log({error, loading})
     }, [error, loading])
 
-    return (
+    const [isloading, setIsloading] = useState(false);
+    useEffect(() => {
+        setIsloading(true);
+        setTimeout(() => {
+            setIsloading(false);
+        }, 2000);
+    }, []);
+
+    return  (
         <>
             <Header/>
             <Slider/>
+            {isloading && <Preloader/>}
             {!products.length && <p> No products </p>}
             {!!products.length &&
             <div className="container px-4 px-lg-5 mt-5">

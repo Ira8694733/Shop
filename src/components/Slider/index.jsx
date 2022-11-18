@@ -17,7 +17,7 @@ const slidesHeader = () => {
         <>
         <div>
             <h4>The coolest devices for you</h4>
-            <div style={containerStyles}>
+            <div style= {containerStyles}>
                 <ImageSlider slides={slides} />
             </div>
         </div>

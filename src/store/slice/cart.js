@@ -9,7 +9,6 @@ const basketSlice = createSlice({
         addToCart: (state, { payload }) => {
             let isInArray = false;
 
-            // if the product is already exist in array
             state.basketItems?.forEach((el) => {
                 if (el.id === payload.id) {
                     isInArray = true;
@@ -45,7 +44,6 @@ const basketSlice = createSlice({
             });
         },
 
-        //input change from Cart page
         inputOnChange: (state, { payload }) => {
             const id = payload.product.id
             const value  = Number(payload.value)
@@ -55,24 +53,8 @@ const basketSlice = createSlice({
                 }
             });
         },
-
-        // add to cart from Product page
-        // productPageAdd:(state, { payload }) => {
-        //     const id = payload.product.id
-        //     const value  = Number(payload.value)
-        //     let isInArray = false;
-        //     state.basketItems?.forEach((el) => {
-        //         if (el.id === payload.product.id) {
-        //             isInArray = true;
-        //             el.quantity = el.quantity + value
-        //         }
-        //     });
-        //     if (!isInArray) {
-        //         state.basketItems.push({ ...payload.product, quantity: value });
-        //     }
-        // },
     },
 });
 
-export const { addToCart, deleteFromCart, buttonPlus, buttonMinus, inputOnChange, productPageAdd } = basketSlice.actions;
+export const { addToCart, deleteFromCart, buttonPlus, buttonMinus, inputOnChange} = basketSlice.actions;
 export default basketSlice.reducer;

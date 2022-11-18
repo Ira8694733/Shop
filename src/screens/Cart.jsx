@@ -4,17 +4,27 @@ import {Link} from "react-router-dom";
 
 import Header from "../components/Header";
 import Card from "../components/CardCart/CardCart";
+import Footer from "../components/Footer";
 
-function Cart() {
+const Cart = () => {
     const cartItems = useSelector((state)=> state.basket.basketItems);
-
 
     return (
         <>
             <Header />
             <section className="section-js hidden py-5 bg-light">
                 <div className="container px-4 px-lg-5 mt-5" style={{minHeight:"41vh"}}>
-                    {!cartItems.length && <div className="empty-cart"><span>Your cart is empty. <Link className="not-found_link" to="/">Return to page All products</Link></span></div>}
+                    {!cartItems.length &&
+                    <div style={{fontSize: "22px", display: "flex", gap: "20px", justifyContent: "center"}}>
+                        <span>YOUR CART IS EMPTY</span>
+                    <Link className="not-found_link" to="/">
+                        <button
+                             type="button"
+                             className="btn btn-outline-dark mt-auto add-basket">
+                             ALL PRODUCTS
+                        </button>
+                    </Link>
+                </div>}
                     {cartItems?.map((product, index) => {
                         return (
                             <Card
@@ -33,6 +43,7 @@ function Cart() {
                     </div>
                 </div>
             </section>
+            <Footer/>
         </>
     );
 }

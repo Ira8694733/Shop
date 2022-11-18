@@ -90,11 +90,13 @@ function Card({
                         </div>
                     </div>
                 </div>
+                <div className="cart-item__icon">
                 <FontAwesomeIcon
                     onClick={handleDelete}
                     icon={faTrash}
                     className="cart-item__delete"
                 />
+                </div>
             </div>
         </div>
     );
